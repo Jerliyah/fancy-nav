@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    overflow-y: scroll;
+}
+
+h1 {
+    margin: 0;
+}
+
+
+
+header {
+    background: url("blue-texture.jpg");
+    background-size: 100%;
+    min-height: 25vw;
+}
+
+
+
+nav {
+    --nav-height: 50px;
+
+    background: black;
+    color: white;
+    height: var(--nav-height);
+    display: flex;
+}
+
+nav #logo {
+    height: var(--nav-height);
+    transition: all 0.8s;
+}
+
+nav #logo.hidden {
+    margin-left: -( var(--nav-height) );
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: calc(100% - (var(--nav-height)) )
+}
+
+nav li {
+    text-transform: uppercase;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+}
+
+nav li:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+
+
+main {
+    margin: 5vw 12vw;
+    padding: 5vw;
+    border-radius: 20px;
+    background: linear-gradient( to right, #80ccff, #99e6e6);
+}
+
+
+/* --------------------------------------------------- */
+
+@media screen and ( max-width: 500px) {
+    nav {
+        height: auto;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li:hover {
+        width: 100%;
+        text-align: right;
+    }
+}
