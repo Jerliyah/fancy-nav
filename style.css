@@ -36,6 +36,7 @@ header {
 nav {
     --nav-height: 50px;
     --dropdown-padding: 1em;
+    --transition-time: 0.2s;
 
     background: black;
     color: white;
@@ -89,7 +90,7 @@ nav .dropdown-content {
     top: calc( var(--dropdown-padding) * 2 );
 
     display: none;
-    transition: all 0.2s;
+    transition: all var(--transition-time);
 }
 nav .dropdown-content > li {
     width: 100%;
@@ -105,13 +106,11 @@ nav .showing-content {
 
 
 nav #dropdown-background {
-    position: absolute;
+    position: fixed;
     background: lightblue;
     clip-path: polygon(50% 0, 60% var(--dropdown-padding), 100% var(--dropdown-padding), 100% 100%, 0 100%, 0 var(--dropdown-padding), 40% var(--dropdown-padding));
-}
 
-nav .showing-background {
-    
+    transition: all var(--transition-time);
 }
 
 

@@ -8,7 +8,9 @@ var dropdown_background = nav.querySelector('#dropdown-background');
 
 
 /* ====== Variables ====== */
-var initial_nav_top = nav.getBoundingClientRect().top
+const initial_nav_top = nav.getBoundingClientRect().top - window.pageYOffset;
+
+const nav_padding = getComputedStyle(nav).getPropertyValue('--dropdown-padding');
 
 
 
@@ -24,6 +26,8 @@ function sticky_nav() {
         nav.style.position = "relative";
         logo.classList.add('hidden');
     }
+
+    adjust_dropdown_background();
 }
 
 function dropdown() {
@@ -31,29 +35,47 @@ function dropdown() {
     let siblings = dropdown_contents.filter( content => content.parentNode != this)
     siblings.forEach( sibling => sibling.classList.remove('showing-content') )
 
-    // Show this dropdown
+    // Measurements
     let content = this.children[1];
     content.classList.toggle('showing-content');
 
-    // measurements
     let nav_bounds = nav.getBoundingClientRect();
     let content_bounds = content.getBoundingClientRect();
 
     let nav_bottom = nav_bounds.top + nav_bounds.height;
-    let padding = getComputedStyle(nav).getPropertyValue('--dropdown-padding');
+    
+
+    
 
     // Position dropdown background based on measurements
     dropdown_background.style.cssText = `
                                 top: ${nav_bottom}px;
                                 left: ${content_bounds.left}px;
-                                height: calc( ${content_bounds.height}px + ${padding} );
-                                width: ${content_bounds.width}px;`
+                                height: calc( ${content_bounds.height}px + ${nav_padding} );
+                                width: ${content_bounds.width}px;
+                                transition: all var(--transition-time);`
+
+}
+
+function adjust_dropdown_background() {
+
+    let showing_content = nav.querySelector('.showing-content');
+
+    if( showing_content ) {
+        let content_bounds = showing_content.getBoundingClientRect();
+
+        dropdown_background.style.top = `calc( ${content_bounds.top}px - ${nav_padding})`
+        dropdown_background.style.left = `${content_bounds.left}px`
+        dropdown_background.style.transition = 'none'
+    }  
 }
 
 
 /* ====== Events ====== */
+
 window.addEventListener('scroll', sticky_nav)
 
 nav_titles.forEach( (title) => {
+    title.addEventListener('click', e => e.preventDefault() )
     title.parentElement.addEventListener('click', dropdown)
 })
