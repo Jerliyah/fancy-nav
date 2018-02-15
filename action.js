@@ -3,6 +3,7 @@ var nav = document.querySelector('nav');
 
 var logo = nav.querySelector('#logo');
 var nav_titles = Array.from(nav.querySelectorAll('a.nav-title'));
+var dropdown_contents = Array.from(nav.querySelectorAll('.dropdown-content'))
 var dropdown_background = nav.querySelector('#dropdown-background');
 
 
@@ -27,12 +28,14 @@ function sticky_nav() {
 
 function dropdown() {
     // Remove .showing from other dropdowns
-    let siblings = Array.from( this.parentNode.children ).filter( li => li != this)
-    siblings.forEach( sibling => sibling.children[1].classList.remove('showing') )
+    let siblings = dropdown_contents.filter( content => content.parentNode != this)
+    siblings.forEach( sibling => sibling.classList.remove('showing-content') )
+
+    console.log(siblings)
 
     // Show this dropdown
     let content = this.children[1];
-    content.classList.toggle('showing');
+    content.classList.toggle('showing-content');
 
     // measurements
     let nav_bounds = nav.getBoundingClientRect();

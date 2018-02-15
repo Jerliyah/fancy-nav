@@ -77,7 +77,7 @@ nav li:hover {
 }
 
 
-nav .dropdown {
+nav .dropdown-content {
 
     /* display: flex; */
     flex-direction: column;
@@ -91,30 +91,30 @@ nav .dropdown {
     display: none;
     transition: all 0.2s;
 }
-nav .dropdown > li {
+nav .dropdown-content > li {
     width: 100%;
 }
-nav .dropdown img {
+nav .dropdown-content img {
     width: 50%;
     margin: 0 auto;
 }
 
-
-
-nav .showing {
+nav .showing-content {
     display: flex;
 }
+
 
 nav #dropdown-background {
     position: absolute;
     background: lightblue;
     clip-path: polygon(50% 0, 60% var(--dropdown-padding), 100% var(--dropdown-padding), 100% 100%, 0 100%, 0 var(--dropdown-padding), 40% var(--dropdown-padding));
-
-    height: 100px;
-    width: 100px;
-    top: 0;
-    left: 0;
 }
+
+nav .showing-background {
+    
+}
+
+
 
 
 
