@@ -76,6 +76,7 @@ function adjust_dropdown_background() {
 window.addEventListener('scroll', sticky_nav)
 
 nav_titles.forEach( (title) => {
+    // TODO: Change to hover
     title.addEventListener('click', e => e.preventDefault() )
     title.parentElement.addEventListener('click', dropdown)
 })
