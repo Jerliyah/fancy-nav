@@ -17,7 +17,7 @@ const nav_padding = getComputedStyle(nav).getPropertyValue('--dropdown-padding')
 /* ====== Functions ====== */
 function sticky_nav() {
 
-    if( window.scrollY >= initial_nav_top ) {
+    if( window.pageYOffset >= initial_nav_top ) {
         nav.style.position = "fixed";
         nav.style.top = 0;
         logo.classList.remove('hidden');
