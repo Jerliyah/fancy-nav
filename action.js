@@ -40,13 +40,12 @@ function dropdown() {
 
     let nav_bottom = nav_bounds.top + nav_bounds.height;
     let padding = getComputedStyle(nav).getPropertyValue('--dropdown-padding');
-    console.log(padding)
 
     // Position dropdown background based on measurements
     dropdown_background.style.cssText = `
                                 top: ${nav_bottom}px;
                                 left: ${content_bounds.left}px;
-                                height: ${content_bounds.height}px;
+                                height: calc( ${content_bounds.height}px + ${padding} );
                                 width: ${content_bounds.width}px;`
 }
 

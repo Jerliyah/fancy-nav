@@ -15,6 +15,10 @@ h1 {
     margin: 0;
 }
 
+p {
+    margin: 0.5em;
+}
+
 a {
     text-decoration: none;
 }
@@ -82,7 +86,7 @@ nav .dropdown {
     margin: 0;
     padding: var(--dropdown-padding);
     position: relative;
-    top: var(--dropdown-padding);
+    top: calc( var(--dropdown-padding) * 2 );
 
     opacity: 0;
     transition: all 0.2s;
@@ -104,6 +108,7 @@ nav .showing {
 nav #dropdown-background {
     position: absolute;
     background: lightblue;
+    clip-path: polygon(50% 0, 60% var(--dropdown-padding), 100% var(--dropdown-padding), 100% 100%, 0 100%, 0 var(--dropdown-padding), 40% var(--dropdown-padding));
 
     height: 100px;
     width: 100px;
