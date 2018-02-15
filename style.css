@@ -3,14 +3,20 @@ body {
     padding: 0;
     height: 100vh;
 
-    display: flex;
-    flex-direction: column;
     font-family: sans-serif;
     overflow-y: scroll;
 }
 
+body > * {
+    width: 100%;
+}
+
 h1 {
     margin: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 
@@ -18,19 +24,20 @@ h1 {
 header {
     background: url("blue-texture.jpg");
     background-size: 100%;
-    min-height: 25vw;
+    height: 25vw;
 }
 
 
 
 nav {
     --nav-height: 50px;
+    --dropdown-padding: 1em;
 
     background: black;
     color: white;
     height: var(--nav-height);
     display: flex;
-    width: 100%;
+    text-align: center;
 }
 
 nav #logo {
@@ -39,11 +46,12 @@ nav #logo {
 }
 
 nav #logo.hidden {
+    /* This works because: logo width == logo height == nav height */
     margin-left: calc(-1 * var(--nav-height));
 }
 
 
-nav ul {
+nav > ul {
     list-style: none;
     display: flex;
     justify-content: space-around;
@@ -54,7 +62,7 @@ nav ul {
     width: calc(100% - (var(--nav-height)) )
 }
 
-nav li {
+nav > ul > li {
     height: 100%;
     box-sizing: border-box;
     padding: 1em;
@@ -64,17 +72,54 @@ nav li:hover {
     background: rgba(255,255,255,0.3);
 }
 
-nav li > *:not(a) {
-    display:none;
+
+nav .dropdown {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    list-style: none;
+    margin: 0;
+    padding: var(--dropdown-padding);
+    position: relative;
+    top: var(--dropdown-padding);
+
+    opacity: 0;
+    transition: all 0.2s;
+}
+nav .dropdown > li {
+    width: 100%;
+}
+nav .dropdown img {
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+
+nav .showing {
+    opacity: 1
+}
+
+nav #dropdown-background {
+    position: absolute;
+    background: lightblue;
+
+    height: 100px;
+    width: 100px;
+    top: 0;
+    left: 0;
 }
 
 
 
 main {
-    margin: 5vw 12vw;
+    box-sizing: border-box;
     padding: 5vw;
     border-radius: 20px;
     background: linear-gradient( to right, #80ccff, #99e6e6);
+    width: 80%;
+    margin: 5vw 10%;
 }
 
 
