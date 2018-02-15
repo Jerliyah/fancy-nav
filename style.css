@@ -63,7 +63,7 @@ nav > ul {
     margin: 0;
     padding: 0;
     height: 100%;
-    width: calc(100% - (var(--nav-height)) )
+    width: 100%;
 }
 
 nav > ul > li {
@@ -79,7 +79,7 @@ nav li:hover {
 
 nav .dropdown {
 
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     max-width: 300px;
     list-style: none;
@@ -88,7 +88,7 @@ nav .dropdown {
     position: relative;
     top: calc( var(--dropdown-padding) * 2 );
 
-    opacity: 0;
+    display: none;
     transition: all 0.2s;
 }
 nav .dropdown > li {
@@ -102,7 +102,7 @@ nav .dropdown img {
 
 
 nav .showing {
-    opacity: 1
+    display: flex;
 }
 
 nav #dropdown-background {
