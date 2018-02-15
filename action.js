@@ -31,8 +31,6 @@ function dropdown() {
     let siblings = dropdown_contents.filter( content => content.parentNode != this)
     siblings.forEach( sibling => sibling.classList.remove('showing-content') )
 
-    console.log(siblings)
-
     // Show this dropdown
     let content = this.children[1];
     content.classList.toggle('showing-content');
